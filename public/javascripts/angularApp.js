@@ -7,14 +7,9 @@ function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
     .state('home', {
-      url: '/home',
-      templateUrl: '/home.html',
-      controller: 'MainCtrl',
-      resolve: {
-	    postPromise: ['posts', function(posts){
-	      return posts.getAll();
-	    }]
-  	  }
+	    url: '/home',
+	    templateUrl: '/home.html',
+	    controller: 'MainCtrl'
     })
 
     .state('posts', {
@@ -27,8 +22,8 @@ function($stateProvider, $urlRouterProvider) {
 }]);
 
 
-app.factory('posts', ['$http', function(){
-  var o = {
+app.factory('Posts', ['$http', function($http) {
+ var o = {
     posts: []
   };
 
@@ -38,38 +33,34 @@ app.factory('posts', ['$http', function(){
     });
   };
 
+  o.create = function(post) {
+  	return $http.post('/posts', post).success(function(data){
+  		o.posts.push(data);
+  	});
+  };
+
   return o;
+
 }]);
 
 
 app.controller('MainCtrl', [
 	'$scope',
-	'posts',
-	function($scope, posts) {
-		if(!$scope.title || $scope.title === '') { return; }
+	'Posts',
+	function($scope, Posts) {
 
-		$scope.posts = posts.posts;
+		Posts.getAll();
+		$scope.posts = Posts.posts;
 
 		$scope.addPost = function(){
 			if(!$scope.title || $scope.title === '') { return; }
-			$scope.posts.push({
+			posts.create({
 				title: $scope.title,
 				link: $scope.link,
-				upvotes: 0,
-				comments: [
-					{author: 'Joe', body: 'Cool post!', upvotes: 0},
-					{author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
-				]
 			});
 			$scope.title = '';
 			$scope.link = '';
 		};
-
-		$scope.incrementUpvotes = function(post) {
-  			post.upvotes += 1;
-		};
-
-
 }]);
 
 
