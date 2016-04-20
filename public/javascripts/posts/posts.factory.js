@@ -3,6 +3,12 @@ app.factory('Posts', ['$http', function($http) {
     posts: []
   };
 
+  o.get = function(id) {
+    return $http.get('/posts/' + id).then(function(res){
+      return res.data;
+    });
+  };
+
   o.getAll = function() {
     return $http.get('/posts').success(function(data){
       angular.copy(data, o.posts);
@@ -15,11 +21,22 @@ app.factory('Posts', ['$http', function($http) {
   	});
   };
 
+  o.addComment = function(id, comment) {
+    return $http.post('/posts/' + id + '/comments', comment);
+  };
+
   o.upvote = function(post) {
   	return $http.put('/posts/' + post._id + '/upvote')
   	.success(function(data){
   		post.upvotes += 1;
   	});
+  };
+
+  o.upvoteComment = function(post, comment) {
+    return $http.put('/posts/' + post._id + '/comments/'+ comment._id + '/upvote')
+    .success(function(data){
+      comment.upvotes += 1;
+    });
   };
 
   return o;

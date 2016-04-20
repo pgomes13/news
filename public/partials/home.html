@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Flapper News</h1>
+  <h1>News</h1>
 </div>
 
 <div ng-repeat="post in posts | orderBy:'-upvotes'">
@@ -7,12 +7,13 @@
   ng-click="incrementUpvotes(post)"></span>
   {{post.upvotes}}
   <span style="font-size:20px; margin-left:10px;">
-    <a ng-show="post.link" href="{{post.link}}">
+    <a ng-show="post.link" href="{{post.link}}" target="_blank">
       {{post.title}}
     </a>
     <span ng-hide="post.link">
       {{post.title}}
     </span>
+    -
     <span>
       <a href="#/posts/{{post._id}}">Comments</a>
     </span>
