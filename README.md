@@ -3,7 +3,9 @@
 Reference - https://thinkster.io/mean-stack-tutorial
 
 <b>Prerequisites</b>
+
 <a href="https://nodejs.org/en/">Install Node.js</a>
+
 <a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">Install MongoDB</a>
 
 <b>Running MongoDB</b> <br>
