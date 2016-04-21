@@ -52,6 +52,7 @@ Once the database connection is defined in express app.js, the express app autom
 
 
 <b>Post data</b>
+
 curl --data 'title=Instagram&link=https://www.instagram.com' http://localhost:3000/posts
 
 curl -X PUT http://localhost:3000/posts/571830754198a81421117a9a/upvote
