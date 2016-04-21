@@ -8,52 +8,53 @@ Reference - https://thinkster.io/mean-stack-tutorial
 
 <a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">Install MongoDB</a>
 
-<b>Running MongoDB</b> <br>
+<b>Running MongoDB</b>
+
 Run 'mongod' in terminal
 
 Options -
 
-  mongod --port 12345 (on different port)
+  'mongod --port 12345' (on different port)
   
-  mongod --shutdown (shutdown)
+  'mongod --shutdown' (shutdown)
   
-  pgrep mongo (list mongod instances)
+  'pgrep mongo' (list mongod process instances)
   
-  kill <mongod process ID>
+  'kill mongod_process_ID'
   
 Note - if 'mongod' does not run correctly, kill all the mongod instances and run 'mongod' again.
 
 
 <b>Create a new Express project</b>
 
-npm install -g express-generator
+'npm install -g express-generator'
 
-express --ejs news  (use ejs for the EJS templating engine for using standard HTML in the templates)
+'express --ejs news'  (use ejs for the EJS templating engine for using standard HTML in the templates)
 
 cd news
 
-npm install
+'npm install'
 
 
 <b>Install Mongoose</b>
 
-npm install --save mongoose
+'npm install --save mongoose'
 
-mkdir models (inside the express project scaffold)
+'mkdir models' (inside the express project scaffold)
 
 
 <b>Starting Node Server</b>
 
-npm start
+'npm start'
 
-http://localhost:3000
+Load http://localhost:3000 on the browser.
 
 
 Note - run the express app and the mongo instance in two separate tabs in the terminal. 
 Once the database connection is defined in express app.js, the express app automatically connects to the mongo database instance.
 
 
-<b>Post data</b>
+<b>Post data through Terminal</b>
 
 curl --data 'title=Instagram&link=https://www.instagram.com' http://localhost:3000/posts
 
