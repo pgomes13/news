@@ -51,6 +51,29 @@ Note - run the express app and the mongo instance in two separate tabs in the te
 Once the database connection is defined in express app.js, the express app automatically connects to the mongo database instance.
 
 
+<b>Post data</b>
+curl --data 'title=Instagram&link=https://www.instagram.com' http://localhost:3000/posts
+
+curl -X PUT http://localhost:3000/posts/571830754198a81421117a9a/upvote
+
+
+
+<b>MongoDB Commands</b>
+
+'mongo' - run the mongo shell
+
+'show dbs' - show all the mongo databases
+
+'use news' - use the news database 
+
+'show collections' - show the schema collections
+
+'db.posts.find()' - list all documents in a collection
+
+'db.posts.update({"title" : "LinkedIn"}, {$set: {"upvotes" : 2}})' - update posts collection
+
+
+
 
 
 
